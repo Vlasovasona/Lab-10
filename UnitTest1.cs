@@ -9,7 +9,7 @@ namespace UnitTeats
         public void ConstructorEmtyInstrument()
         {
             Instrument tool1 = new Instrument();
-            Instrument tool2 = new Instrument("Нет инструмента", 1);
+            Instrument tool2 = new Instrument("РќРµС‚ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°", 1);
             Assert.AreEqual(tool1, tool2);
         }
 
@@ -17,7 +17,7 @@ namespace UnitTeats
         public void ConstructorEmtyHandTool()
         {
             HandTool tool1 = new HandTool();
-            HandTool tool2 = new HandTool(1, "Нет инструмента", "Нет материала");
+            HandTool tool2 = new HandTool(1, "РќРµС‚ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°", "РќРµС‚ РјР°С‚РµСЂРёР°Р»Р°");
             Assert.AreEqual(tool1, tool2);
         }
 
@@ -25,7 +25,7 @@ namespace UnitTeats
         public void ConstructorEmtyMeaTool()
         {
             MeasuringTool tool1 = new MeasuringTool();
-            MeasuringTool tool2 = new MeasuringTool(1, "Нет инструмента", "Нет единиц измерения", 0);
+            MeasuringTool tool2 = new MeasuringTool(1, "РќРµС‚ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°", "РќРµС‚ РµРґРёРЅРёС† РёР·РјРµСЂРµРЅРёСЏ", 0);
             Assert.AreEqual(tool1, tool2);
         }
 
@@ -33,26 +33,26 @@ namespace UnitTeats
         public void ConstructorEmtyElTool()
         {
             ElectricTool tool1 = new ElectricTool();
-            ElectricTool tool2 = new ElectricTool(1, "Нет инструмента", "Нет источника питания", 0);
+            ElectricTool tool2 = new ElectricTool(1, "РќРµС‚ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°", "РќРµС‚ РёСЃС‚РѕС‡РЅРёРєР° РїРёС‚Р°РЅРёСЏ", 0);
             Assert.AreEqual(tool1, tool2);
         }
 
         [TestMethod]
         public void CheckExceptionElectric()
         {
-            Assert.ThrowsException<Exception>(() => { new ElectricTool(9, "Лобзик", "Аккумулятор", -20); });
+            Assert.ThrowsException<Exception>(() => { new ElectricTool(9, "Р›РѕР±Р·РёРє", "РђРєРєСѓРјСѓР»СЏС‚РѕСЂ", -20); });
         }
 
         [TestMethod]
         public void CheckExceptionMeas()
         {
-            Assert.ThrowsException<Exception>(() => { new MeasuringTool(9, "Линейка", "Сантиметры", -20); });
+            Assert.ThrowsException<Exception>(() => { new MeasuringTool(9, "Р›РёРЅРµР№РєР°", "РЎР°РЅС‚РёРјРµС‚СЂС‹", -20); });
         }
 
         [TestMethod]
         public void CheckExceptionMeasAcc()
         {
-            Assert.ThrowsException<Exception>(() => { new MeasuringTool(9, "Линейка", "Сантиметры", 10); });
+            Assert.ThrowsException<Exception>(() => { new MeasuringTool(9, "Р›РёРЅРµР№РєР°", "РЎР°РЅС‚РёРјРµС‚СЂС‹", 10); });
         }
 
         [TestMethod]
@@ -107,20 +107,20 @@ namespace UnitTeats
         public void CheckSort()
         {
             Instrument[] arr = new Instrument[2];
-            arr[1] = new Instrument("Линейка", 2);
-            arr[0] = new Instrument("Лобзик", 34);
+            arr[1] = new Instrument("Р›РёРЅРµР№РєР°", 2);
+            arr[0] = new Instrument("Р›РѕР±Р·РёРє", 34);
             Array.Sort(arr);
-            Assert.AreNotEqual(arr[0], new Instrument("Лобзик", 34));
+            Assert.AreNotEqual(arr[0], new Instrument("Р›РѕР±Р·РёРє", 34));
         }
 
         [TestMethod]
         public void CheckSortByWorkingTime()
         {
             ElectricTool[] arr = new ElectricTool[2];
-            arr[1] = new ElectricTool(2, "Болгарка", "Аккумулятор", 120);
-            arr[0] = new ElectricTool(2, "Дрель", "Аккумулятор", 50);
+            arr[1] = new ElectricTool(2, "Р‘РѕР»РіР°СЂРєР°", "РђРєРєСѓРјСѓР»СЏС‚РѕСЂ", 120);
+            arr[0] = new ElectricTool(2, "Р”СЂРµР»СЊ", "РђРєРєСѓРјСѓР»СЏС‚РѕСЂ", 50);
             Array.Sort(arr, new SortByWorkingTime());
-            Assert.AreEqual(arr[0], new ElectricTool(2, "Дрель", "Аккумулятор", 50));
+            Assert.AreEqual(arr[0], new ElectricTool(2, "Р”СЂРµР»СЊ", "РђРєРєСѓРјСѓР»СЏС‚РѕСЂ", 50));
         }
 
         [TestMethod]
